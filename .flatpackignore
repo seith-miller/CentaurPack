@@ -1,0 +1,16 @@
+# Ignore virtual environment directory
+venv/
+
+# Ignore egg-info directory
+flatpack.egg-info/
+
+# Ignore common system files
+*.pyc
+__pycache__/
+.DS_Store
+*.log
+*.tmp
+
+# Ignore specific directories or files
+test_dir/
+*.bak

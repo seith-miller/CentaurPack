@@ -1,3 +1,5 @@
+# unpack.py
+
 import os
 import logging
 from .utils import read_file_marker, read_dir_marker
@@ -5,7 +7,7 @@ from .utils import read_file_marker, read_dir_marker
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-def unpack_file(packed_file, output_dir):
+def unpack_file(packed_file, output_dir, verbose=False):
     try:
         with open(packed_file, 'r') as f:
             line = f.readline().strip()
@@ -20,23 +22,27 @@ def unpack_file(packed_file, output_dir):
                         current_file.close()
                     file_path = line[7:-2]  # Remove "<<FILE:" and ">>"
                     full_path = os.path.join(output_dir, file_path)
-                    logger.debug(f"Creating file: {full_path}")
+                    if verbose:
+                        logger.debug(f"Creating file: {full_path}")
                     os.makedirs(os.path.dirname(full_path), exist_ok=True)
                     current_file = open(full_path, 'w')
                 elif line.startswith("<<DIR:"):
                     dir_path = line[6:-2]  # Remove "<<DIR:" and ">>"
                     if dir_path:  # Only create directory if path is not empty
                         full_dir_path = os.path.join(output_dir, dir_path)
-                        logger.debug(f"Creating directory: {full_dir_path}")
+                        if verbose:
+                            logger.debug(f"Creating directory: {full_dir_path}")
                         os.makedirs(full_dir_path, exist_ok=True)
                 elif line == "<<ENDFILE>>":
                     if current_file:
-                        logger.debug(f"Closing file: {current_file.name}")
+                        if verbose:
+                            logger.debug(f"Closing file: {current_file.name}")
                         current_file.flush()
                         current_file.close()
                         current_file = None
                 elif current_file:
-                    logger.debug(f"Writing to file {current_file.name}: {line}")
+                    if verbose:
+                        logger.debug(f"Writing to file {current_file.name}: {line}")
                     current_file.write(line + '\n')
                 else:
                     logger.warning(f"Unexpected line: {line}")

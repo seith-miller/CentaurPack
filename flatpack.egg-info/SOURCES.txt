@@ -2,6 +2,7 @@ README.md
 setup.py
 flatpack/__init__.py
 flatpack/cli.py
+flatpack/ignore.py
 flatpack/pack.py
 flatpack/unpack.py
 flatpack/utils.py
@@ -10,5 +11,6 @@ flatpack.egg-info/SOURCES.txt
 flatpack.egg-info/dependency_links.txt
 flatpack.egg-info/entry_points.txt
 flatpack.egg-info/top_level.txt
+tests/test_ignore.py
 tests/test_pack.py
 tests/test_unpack.py

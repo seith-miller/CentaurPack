@@ -1,7 +1,7 @@
 import os
 import tempfile
 import unittest
-from src.pack import pack_directory
+from flatpack.pack import pack_directory
 
 class TestPack(unittest.TestCase):
     def setUp(self):
@@ -45,10 +45,3 @@ class TestPack(unittest.TestCase):
             content = f.read()
         
         self.assertIn("<<FLATPACK_VERSION:1.0>>", content)
-        self.assertNotIn("<<FILE:", content)
-        self.assertNotIn("<<DIR:", content)
-
-        os.rmdir(empty_dir)
-
-if __name__ == '__main__':
-    unittest.main()

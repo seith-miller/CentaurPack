@@ -1,7 +1,7 @@
 import os
 import tempfile
 import unittest
-from src.unpack import unpack_file
+from flatpack.unpack import unpack_file
 
 class TestUnpack(unittest.TestCase):
     def setUp(self):
@@ -31,32 +31,8 @@ class TestUnpack(unittest.TestCase):
     def test_unpack_file(self):
         unpack_file(self.test_file, self.output_dir)
         
-        print(f"\nOutput directory contents:")
-        for root, dirs, files in os.walk(self.output_dir):
-            level = root.replace(self.output_dir, '').count(os.sep)
-            indent = ' ' * 4 * level
-            print(f"{indent}{os.path.basename(root)}/")
-            subindent = ' ' * 4 * (level + 1)
-            for f in files:
-                print(f"{subindent}{f}")
-        
         expected_file1 = os.path.join(self.output_dir, "file1.txt")
         expected_file2 = os.path.join(self.output_dir, "subdir", "file2.txt")
-        
-        print(f"\nChecking directory: {os.path.join(self.output_dir, 'subdir')}")
-        print(f"Directory exists: {os.path.isdir(os.path.join(self.output_dir, 'subdir'))}")
-        
-        print(f"\nChecking file: {expected_file1}")
-        print(f"File exists: {os.path.isfile(expected_file1)}")
-        if os.path.isfile(expected_file1):
-            with open(expected_file1, "r") as f:
-                print(f"File contents: {f.read().strip()}")
-        
-        print(f"\nChecking file: {expected_file2}")
-        print(f"File exists: {os.path.isfile(expected_file2)}")
-        if os.path.isfile(expected_file2):
-            with open(expected_file2, "r") as f:
-                print(f"File contents: {f.read().strip()}")
         
         self.assertTrue(os.path.isdir(os.path.join(self.output_dir, "subdir")), "Subdirectory was not created")
         self.assertTrue(os.path.isfile(expected_file1), f"File not created: {expected_file1}")
