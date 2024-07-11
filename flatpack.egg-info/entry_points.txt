@@ -1,2 +1,2 @@
 [console_scripts]
-flatpack = src.flatpack:main
+flatpack = flatpack.cli:main
