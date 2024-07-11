@@ -11,6 +11,8 @@ __pycache__/
 *.log
 *.tmp
 
-# Ignore specific directories or files
-test_dir/
-*.bak
+# Ignore Git files and directories
+.git/
+.gitignore
+.gitattributes
+.gitmodules
