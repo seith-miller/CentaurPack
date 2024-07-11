@@ -1,0 +1,14 @@
+README.md
+setup.py
+flatpack.egg-info/PKG-INFO
+flatpack.egg-info/SOURCES.txt
+flatpack.egg-info/dependency_links.txt
+flatpack.egg-info/entry_points.txt
+flatpack.egg-info/top_level.txt
+src/__init__.py
+src/flatpack.py
+src/pack.py
+src/unpack.py
+src/utils.py
+tests/test_pack.py
+tests/test_unpack.py

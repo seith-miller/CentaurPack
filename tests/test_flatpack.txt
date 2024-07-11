@@ -1,0 +1,10 @@
+<<FLATPACK_VERSION:1.0>>
+<<DIR:testdir>>
+<<FILE:testfile.txt>>
+This is a test file content.
+It can span multiple lines.
+<<ENDFILE>>
+<<FILE:testdir/nested_file.txt>>
+This is a nested file content.
+It's inside the testdir directory.
+<<ENDFILE>>
