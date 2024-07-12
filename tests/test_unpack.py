@@ -1,14 +1,14 @@
 import os
 import tempfile
 import unittest
-from flatpack.unpack import unpack_file
+from centaurpack.unpack import unpack_file
 
 class TestUnpack(unittest.TestCase):
     def setUp(self):
         self.test_file = tempfile.mktemp()
         self.output_dir = tempfile.mkdtemp()
 
-        # Create a test flatpack file
+        # Create a test .cpk file
         with open(self.test_file, "w") as f:
             f.write("<<CENTAURPACK_VERSION:1.0>>\n")
             f.write("<<DIR:subdir>>\n")
@@ -48,13 +48,13 @@ class TestUnpack(unittest.TestCase):
 
     def test_unpack_invalid_file(self):
         with open(self.test_file, "w") as f:
-            f.write("This is not a valid flatpack file")
+            f.write("This is not a valid centaurpack file")
         
         with self.assertRaises(ValueError):
             unpack_file(self.test_file, self.output_dir)
 
     def test_unpack_preserves_indentation(self):
-        # Create a test flatpack file with indented content
+        # Create a centaurpack file with indented content
         with open(self.test_file, "w") as f:
             f.write("<<CENTAURPACK_VERSION:1.0>>\n")
             f.write("<<FILE:indented_file.py>>\n")

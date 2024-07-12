@@ -1,7 +1,7 @@
 import os
 import tempfile
 import unittest
-from flatpack.pack import pack_directory
+from centaurpack.pack import pack_directory
 
 class TestPack(unittest.TestCase):
     def setUp(self):

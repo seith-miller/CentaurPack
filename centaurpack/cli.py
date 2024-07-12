@@ -4,8 +4,6 @@ from .utils import write_file_marker, write_dir_marker
 from .pack import pack_directory
 from .unpack import unpack_file
 
-print("cli.py is being executed")
-
 VERSION = "0.1.0"
 
 def main():

@@ -1,5 +1,5 @@
 import unittest
-from flatpack.ignore import IgnoreManager
+from centaurpack.ignore import IgnoreManager
 import tempfile
 import os
 

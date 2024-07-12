@@ -4,9 +4,10 @@ import fnmatch
 import os
 
 class IgnoreManager:
-    def __init__(self, ignore_file='.centaurpackignore'):
+    def __init__(self, ignore_file='.centaurpackignore', verbose=False):
         self.ignore_file = ignore_file
         self.patterns = []
+        self.verbose = verbose
         self.load_patterns()
 
     def load_patterns(self):
@@ -21,12 +22,14 @@ class IgnoreManager:
         for pattern in self.patterns:
             # Check for exact pattern match
             if fnmatch.fnmatch(path, pattern):
-                print(f"Path '{path}' matches pattern '{pattern}'")
+                if self.verbose:
+                    print(f"Path '{path}' matches pattern '{pattern}'")
                 return True
             # Check for directory pattern match
             if pattern.endswith('/') and path.startswith(pattern[:-1]):
-                print(f"Path '{path}' matches directory pattern '{pattern}'")
+                if self.verbose:
+                    print(f"Path '{path}' matches directory pattern '{pattern}'")
                 return True
-            else:
+            elif self.verbose:
                 print(f"Path '{path}' does not match pattern '{pattern}'")
         return False

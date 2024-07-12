@@ -7,7 +7,7 @@ from .ignore import IgnoreManager
 def pack_directory(directory, output_file, verbose=False):
     text_extensions = ['.py', '.js', '.html', '.css', '.md', '.txt', '.json', '.yml', '.yaml']
     max_file_size = 1024 * 1024  # 1 MB limit
-    ignore_manager = IgnoreManager()
+    ignore_manager = IgnoreManager(verbose=verbose)
 
     with open(output_file, 'w', encoding='utf-8') as f:
         if verbose:
