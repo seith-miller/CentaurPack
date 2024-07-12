@@ -21,5 +21,7 @@ wheels/
 *.egg
 MANIFEST
 
-# flatpack
-flatpack.fpk
+# centaurpack
+*.cpk
+
+.DS_Store

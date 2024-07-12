@@ -1,0 +1,5 @@
+<<CENTAURPACK_VERSION:1.0>>
+<<FILE:testdir/nested_file.txt>>
+This is the updated content for the nested file.
+We've changed it to demonstrate how Flatpack can be used for updates.
+<<ENDFILE>>

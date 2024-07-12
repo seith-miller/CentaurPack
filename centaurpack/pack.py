@@ -12,7 +12,7 @@ def pack_directory(directory, output_file, verbose=False):
     with open(output_file, 'w', encoding='utf-8') as f:
         if verbose:
             print(f"Packing directory: {directory}")
-        f.write("<<FLATPACK_VERSION:1.0>>\n")
+        f.write("<<CENTAURPACK_VERSION:1.0>>\n")
         for root, dirs, files in os.walk(directory):
             rel_path = os.path.relpath(root, directory)
             if rel_path != '.' and not ignore_manager.is_ignored(rel_path):

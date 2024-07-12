@@ -30,7 +30,7 @@ class TestPack(unittest.TestCase):
         with open(self.output_file, "r") as f:
             content = f.read()
         
-        self.assertIn("<<FLATPACK_VERSION:1.0>>", content)
+        self.assertIn("<<CENTAURPACK_VERSION:1.0>>", content)
         self.assertIn("<<DIR:subdir>>", content)
         self.assertIn("<<FILE:file1.txt>>", content)
         self.assertIn("Content of file1", content)
@@ -44,4 +44,4 @@ class TestPack(unittest.TestCase):
         with open(self.output_file, "r") as f:
             content = f.read()
         
-        self.assertIn("<<FLATPACK_VERSION:1.0>>", content)
+        self.assertIn("<<CENTAURPACK_VERSION:1.0>>", content)

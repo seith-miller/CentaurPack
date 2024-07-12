@@ -4,7 +4,7 @@ import fnmatch
 import os
 
 class IgnoreManager:
-    def __init__(self, ignore_file='.flatpackignore'):
+    def __init__(self, ignore_file='.centaurpackignore'):
         self.ignore_file = ignore_file
         self.patterns = []
         self.load_patterns()

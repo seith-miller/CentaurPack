@@ -10,7 +10,7 @@ class TestUnpack(unittest.TestCase):
 
         # Create a test flatpack file
         with open(self.test_file, "w") as f:
-            f.write("<<FLATPACK_VERSION:1.0>>\n")
+            f.write("<<CENTAURPACK_VERSION:1.0>>\n")
             f.write("<<DIR:subdir>>\n")
             f.write("<<FILE:file1.txt>>\n")
             f.write("Content of file1\n")
@@ -52,6 +52,29 @@ class TestUnpack(unittest.TestCase):
         
         with self.assertRaises(ValueError):
             unpack_file(self.test_file, self.output_dir)
+
+    def test_unpack_preserves_indentation(self):
+        # Create a test flatpack file with indented content
+        with open(self.test_file, "w") as f:
+            f.write("<<CENTAURPACK_VERSION:1.0>>\n")
+            f.write("<<FILE:indented_file.py>>\n")
+            f.write("def hello_world():\n")
+            f.write("    print('Hello, World!')\n")
+            f.write("    if True:\n")
+            f.write("        print('Indented')\n")
+            f.write("<<ENDFILE>>\n")
+
+        # Unpack the file
+        unpack_file(self.test_file, self.output_dir)
+
+        # Check the unpacked file
+        unpacked_file = os.path.join(self.output_dir, "indented_file.py")
+        self.assertTrue(os.path.isfile(unpacked_file), "Indented file was not created")
+
+        with open(unpacked_file, "r") as f:
+            content = f.read()
+            self.assertEqual(content, "def hello_world():\n    print('Hello, World!')\n    if True:\n        print('Indented')\n", 
+                            "Indentation was not preserved")
 
 if __name__ == '__main__':
     unittest.main()

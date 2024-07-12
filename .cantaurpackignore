@@ -2,7 +2,7 @@
 venv/
 
 # Ignore egg-info directory
-flatpack.egg-info/
+*.egg-info/
 
 # Ignore common system files
 *.pyc

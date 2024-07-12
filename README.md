@@ -1,10 +1,10 @@
-# Flatpack
+# CentaurPack
 
-Flatpack is a command-line tool for packing and unpacking directory structures into single files. It's designed to make sharing code and project structures easier.
+CentaurPack is a command-line tool for packing and unpacking directory structures into single files. It's designed to make sharing code and project structures easier.
 
 ## Features
 - Pack entire directory structures into a single file
-- Unpack Flatpack files back into their original directory structure
+- Unpack CentaurPack files back into their original directory structure
 - Preserve file contents and directory hierarchy
 - Simple command-line interface
 
@@ -14,31 +14,27 @@ Flatpack is a command-line tool for packing and unpacking directory structures i
 
 ### Setup
 1. Clone the repository:
-git clone https://github.com/yourusername/flatpack.git
-cd flatpack
+git clone https://github.com/centaurinc/centaurpack.git
+cd centaurpack
 2. Create a virtual environment:
 python3 -m venv venv
 3. Activate the virtual environment:
 - On Unix or MacOS:
-  ```
-  source venv/bin/activate
-  ```
+source venv/bin/activate
 - On Windows:
-  ```
-  venv\Scripts\activate
-  ```
+venv\Scripts\activate
 4. Install the project in editable mode:
 pip install -e .
 
 ## Usage
-After installation, you can use Flatpack with the following commands:
+After installation, you can use CentaurPack with the following commands:
 
 ### Packing a directory
-flatpack pack <directory> <output_file>
+centaurpack pack <directory> <output_file>
 This will pack the contents of `<directory>` into `<output_file>`.
 
 ### Unpacking a file
-flatpack unpack <input_file> <output_directory>
+centaurpack unpack <input_file> <output_directory>
 This will unpack the contents of `<input_file>` into `<output_directory>`.
 
 ## Development
@@ -49,7 +45,6 @@ python run_tests.py
 To run specific test files:
 python -m unittest tests.test_pack
 python -m unittest tests.test_unpack
-
 
 ### Contributing
 1. Fork the repository
@@ -62,5 +57,5 @@ python -m unittest tests.test_unpack
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
-- Thanks to all contributors who have helped shape Flatpack
+- Thanks to all contributors who have helped shape CentaurPack
 - Inspired by the need for simple, efficient code sharing

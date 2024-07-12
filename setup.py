@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='flatpack',
+    name='centaurpack',
     version='0.1.0',
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
@@ -10,7 +10,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'flatpack=flatpack.cli:main',
+            'centaurpack=centaurpack.cli:main',
         ],
     },
     author='Centaur Inc.',
@@ -18,7 +18,7 @@ setup(
     description='A tool for packing and unpacking directory structures',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/centaurinc/flatpack',
+    url='https://github.com/centaurinc/centaurpack',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',

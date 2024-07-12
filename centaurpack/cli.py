@@ -9,8 +9,8 @@ print("cli.py is being executed")
 VERSION = "0.1.0"
 
 def main():
-    parser = argparse.ArgumentParser(description='Flatpack: Pack and unpack directory structures.')
-    parser.add_argument('--version', action='version', version=f'Flatpack {VERSION}')
+    parser = argparse.ArgumentParser(description='CentaurPack: Pack and unpack directory structures.')
+    parser.add_argument('--version', action='version', version=f'CentaurPack {VERSION}')
     parser.add_argument('-v', '--verbose', action='store_true', help='Increase output verbosity')
 
     subparsers = parser.add_subparsers(dest='command', help='Available commands')
@@ -21,8 +21,8 @@ def main():
     pack_parser.add_argument('output', help='Output file name')
 
     # Unpack command
-    unpack_parser = subparsers.add_parser('unpack', help='Unpack a flatpack file')
-    unpack_parser.add_argument('file', help='Flatpack file to unpack')
+    unpack_parser = subparsers.add_parser('unpack', help='Unpack a centaurpack file')
+    unpack_parser.add_argument('file', help='CentaurPack file to unpack')
     unpack_parser.add_argument('output', help='Output directory')
 
     args = parser.parse_args()
