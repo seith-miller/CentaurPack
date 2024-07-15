@@ -1,1 +1,0 @@
--e git+ssh://git@github.com/seith-miller/flatpack.git@44669ea92b1fd8ab35d6fe980d5a5d39bd86b8ea#egg=centaurpack

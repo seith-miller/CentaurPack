@@ -1,8 +1,9 @@
 # Ignore virtual environment directory
-venv/
+centaurpack-env
 
 # Ignore egg-info directory
 *.egg-info/
+*.egg-info/*
 
 # Ignore common system files
 *.pyc
@@ -16,3 +17,6 @@ __pycache__/
 .gitignore
 .gitattributes
 .gitmodules
+
+# CentaurPack files
+*.cpk
