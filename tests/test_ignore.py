@@ -3,10 +3,11 @@ from centaurpack.ignore import IgnoreManager
 import tempfile
 import os
 
+
 class TestIgnoreManager(unittest.TestCase):
     def setUp(self):
         self.ignore_file = tempfile.mktemp()
-        with open(self.ignore_file, 'w') as f:
+        with open(self.ignore_file, "w") as f:
             f.write("*.pyc\n")
             f.write("__pycache__/\n")
             f.write("*.log\n")
@@ -26,5 +27,6 @@ class TestIgnoreManager(unittest.TestCase):
         self.assertFalse(self.ignore_manager.is_ignored("file.py"))
         self.assertFalse(self.ignore_manager.is_ignored("src/main.py"))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

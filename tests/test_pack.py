@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from centaurpack.pack import pack_directory
 
+
 class TestPack(unittest.TestCase):
     def setUp(self):
         self.test_dir = tempfile.mkdtemp()
@@ -26,10 +27,10 @@ class TestPack(unittest.TestCase):
 
     def test_pack_directory(self):
         pack_directory(self.test_dir, self.output_file)
-        
+
         with open(self.output_file, "r") as f:
             content = f.read()
-        
+
         self.assertIn("<<CENTAURPACK_VERSION:1.0>>", content)
         self.assertIn("<<DIR:subdir>>", content)
         self.assertIn("<<FILE:file1.txt>>", content)
@@ -40,8 +41,8 @@ class TestPack(unittest.TestCase):
     def test_pack_empty_directory(self):
         empty_dir = tempfile.mkdtemp()
         pack_directory(empty_dir, self.output_file)
-        
+
         with open(self.output_file, "r") as f:
             content = f.read()
-        
+
         self.assertIn("<<CENTAURPACK_VERSION:1.0>>", content)

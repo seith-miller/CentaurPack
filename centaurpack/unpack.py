@@ -1,14 +1,12 @@
-# unpack.py
-
 import os
 import logging
-from .utils import read_file_marker, read_dir_marker
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+
 def unpack_file(packed_file, output_dir, verbose=False):
-    with open(packed_file, 'r') as f:
+    with open(packed_file, "r") as f:
         first_line = f.readline().strip()
         if not first_line.startswith("<<CENTAURPACK_VERSION:"):
             raise ValueError("Invalid CentaurPack file: Missing version header")
@@ -23,7 +21,7 @@ def unpack_file(packed_file, output_dir, verbose=False):
                 file_path = line[7:-2]  # Remove "<<FILE:" and ">>"
                 full_path = os.path.join(output_dir, file_path)
                 os.makedirs(os.path.dirname(full_path), exist_ok=True)
-                current_file = open(full_path, 'w')
+                current_file = open(full_path, "w")
             elif line.startswith("<<DIR:"):
                 dir_path = line[6:-2]  # Remove "<<DIR:" and ">>"
                 full_dir_path = os.path.join(output_dir, dir_path)
@@ -33,6 +31,6 @@ def unpack_file(packed_file, output_dir, verbose=False):
                     current_file.close()
                     current_file = None
             elif current_file:
-                current_file.write(original_line)  # Write the original line to preserve indentation
+                current_file.write(original_line)
             else:
                 logger.warning(f"Unexpected line: {line}")

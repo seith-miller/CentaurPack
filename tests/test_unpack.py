@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from centaurpack.unpack import unpack_file
 
+
 class TestUnpack(unittest.TestCase):
     def setUp(self):
         self.test_file = tempfile.mktemp()
@@ -30,26 +31,41 @@ class TestUnpack(unittest.TestCase):
 
     def test_unpack_file(self):
         unpack_file(self.test_file, self.output_dir)
-        
+
         expected_file1 = os.path.join(self.output_dir, "file1.txt")
         expected_file2 = os.path.join(self.output_dir, "subdir", "file2.txt")
-        
-        self.assertTrue(os.path.isdir(os.path.join(self.output_dir, "subdir")), "Subdirectory was not created")
-        self.assertTrue(os.path.isfile(expected_file1), f"File not created: {expected_file1}")
-        self.assertTrue(os.path.isfile(expected_file2), f"File not created: {expected_file2}")
+
+        self.assertTrue(
+            os.path.isdir(os.path.join(self.output_dir, "subdir")),
+            "Subdirectory was not created",
+        )
+        self.assertTrue(
+            os.path.isfile(expected_file1), f"File not created: {expected_file1}"
+        )
+        self.assertTrue(
+            os.path.isfile(expected_file2), f"File not created: {expected_file2}"
+        )
 
         if os.path.isfile(expected_file1):
             with open(expected_file1, "r") as f:
-                self.assertEqual(f.read().strip(), "Content of file1", "Content of file1 is incorrect")
-        
+                self.assertEqual(
+                    f.read().strip(),
+                    "Content of file1",
+                    "Content of file1 is incorrect",
+                )
+
         if os.path.isfile(expected_file2):
             with open(expected_file2, "r") as f:
-                self.assertEqual(f.read().strip(), "Content of file2", "Content of file2 is incorrect")
+                self.assertEqual(
+                    f.read().strip(),
+                    "Content of file2",
+                    "Content of file2 is incorrect",
+                )
 
     def test_unpack_invalid_file(self):
         with open(self.test_file, "w") as f:
             f.write("This is not a valid centaurpack file")
-        
+
         with self.assertRaises(ValueError):
             unpack_file(self.test_file, self.output_dir)
 
@@ -73,8 +89,12 @@ class TestUnpack(unittest.TestCase):
 
         with open(unpacked_file, "r") as f:
             content = f.read()
-            self.assertEqual(content, "def hello_world():\n    print('Hello, World!')\n    if True:\n        print('Indented')\n", 
-                            "Indentation was not preserved")
+            self.assertEqual(
+                content,
+                "def hello_world():\n    print('Hello, World!')\n    if True:\n        print('Indented')\n",  # noqa: E501
+                "Indentation was not preserved",
+            )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
